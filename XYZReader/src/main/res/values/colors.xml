@@ -18,8 +18,13 @@
 <resources>
     <color name="photo_placeholder">#ccc</color>
 
-    <color name="theme_primary">#04561A</color>
-    <color name="theme_primary_dark">#04561A</color>
-    <color name="theme_accent">#04561A</color>
-    <color name="ltgray">#ffe0e0e0</color>
+    <color name="deep_purple_500">#673AB7</color>
+    <color name="deep_purple_900">#311B92</color>
+    <color name="deep_purple_light">#9a67ea</color>
+    <color name="deep_purple_text">#ffffff</color>
+
+    <color name="lime_a200">#EEFF41</color>
+    <color name="theme_secondary_dark">#707070</color>
+    <color name="theme_secondary_light">#cfcfcf</color>
+    <color name="theme_secondary_text">#000000</color>
 </resources>

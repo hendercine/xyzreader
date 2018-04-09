@@ -15,14 +15,19 @@
      limitations under the License.
 -->
 
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
 
-    <style name="Theme.mBacon" parent="@style/Theme.AppCompat.Light.NoActionBar">
-
+    <style name="AppTheme" parent="@style/Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimary">@color/deep_purple_500</item>
+        <item name="colorPrimaryDark">@color/deep_purple_900</item>
+        <item name="colorAccent">@color/lime_a200</item>
+        <item name="android:windowTranslucentNavigation">false</item>
+        <item name="android:windowTranslucentStatus">true</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:textColor">@color/deep_purple_text</item>
+        <item name="android:fontFamily">Roboto</item>
     </style>
 
-    <style name="Theme.Bacon.Detail">
-        <item name="android:statusBarColor">@android:color/transparent</item>
-    </style>
+    <style name="xyzTheme">CustomXyzTheme</style>
 
 </resources>
