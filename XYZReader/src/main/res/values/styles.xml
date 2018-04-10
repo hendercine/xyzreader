@@ -25,9 +25,31 @@
         <item name="android:windowTranslucentStatus">true</item>
         <item name="android:windowNoTitle">true</item>
         <item name="android:textColor">@color/deep_purple_text</item>
-        <item name="android:fontFamily">Roboto</item>
+        <item name="android:fontFamily">sans-serif</item>
     </style>
 
-    <style name="xyzTheme">CustomXyzTheme</style>
+    <style name="AppTheme.ArticleDetail">
+    </style>
+
+    <style name="AppTheme.ListItem">
+        <item name="android:colorBackground">@color/deep_purple_500</item>
+        <item name="android:layout_marginStart">@dimen/list_item_margin</item>
+        <item name="android:layout_marginEnd">@dimen/list_item_margin</item>
+        <item name="android:layout_marginTop">@dimen/list_item_card_top_margin</item>
+        <item name="android:layout_marginBottom">@dimen/list_item_margin</item>
+    </style>
+
+    <style name="AppTheme.ListItem.Title">
+        <item name="android:textAppearance">@style/Base.TextAppearance.AppCompat.Subhead</item>
+        <item name="android:textColor">@color/deep_purple_500</item>
+    </style>
+
+    <style name="AppTheme.ListItem.SubTitle">
+        <item name="android:textAppearance">@style/TextAppearance.AppCompat.Body1</item>
+        <item name="android:textColor">@color/theme_secondary_dark</item>
+        <item name="android:paddingStart">@dimen/list_item_subtitle_padding</item>
+        <item name="android:paddingEnd">@dimen/list_item_subtitle_padding</item>
+        <item name="android:paddingBottom">@dimen/list_item_subtitle_padding</item>
+    </style>
 
 </resources>
