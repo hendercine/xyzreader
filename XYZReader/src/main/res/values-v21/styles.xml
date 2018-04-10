@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <style name="xyzTheme.Detail">
+    <style name="AppTheme.Detail">
         <item name="android:statusBarColor">@android:color/transparent</item>
         <item name="android:colorPrimary">@color/deep_purple_500</item>
         <item name="android:colorPrimaryDark">@color/deep_purple_900</item>
