@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:elevation="@dimen/cardview_default_elevation"
     android:clickable="true"
     android:focusable="true"
     android:foreground="?selectableItemBackground"
@@ -17,7 +18,12 @@
         <!--suppress AndroidLintContentDescription -->
         <com.example.xyzreader.ui.DynamicHeightNetworkImageView
             android:id="@+id/thumbnail"
-            style="@style/AppTheme.ListItem.Thumbnail"
+            android:layout_width="@dimen/list_item_thumb_wh"
+            android:layout_height="@dimen/list_item_thumb_wh"
+            android:layout_marginBottom="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:background="@color/photo_placeholder"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"

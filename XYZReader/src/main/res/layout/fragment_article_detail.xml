@@ -21,9 +21,7 @@
                 <!--suppress AndroidLintContentDescription -->
                 <ImageView
                     android:id="@+id/photo"
-                    android:layout_width="100dp"
-                    android:layout_height="100dp"
-                     />
+                    style="@style/AppTheme.ListItem.Thumbnail"/>
 
                 <View
                     android:layout_width="match_parent"

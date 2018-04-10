@@ -39,6 +39,15 @@
         <item name="android:layout_marginBottom">@dimen/list_item_margin</item>
     </style>
 
+    <style name="AppTheme.ListItem.Thumbnail">
+        <item name="android:layout_height">@dimen/list_item_thumb_wh</item>
+        <item name="android:layout_width">@dimen/list_item_thumb_wh</item>
+        <item name="android:layout_marginBottom">@dimen/list_item_text_margin</item>
+        <item name="android:layout_marginStart">@dimen/list_item_text_margin</item>
+        <item name="android:layout_marginTop">@dimen/list_item_text_margin</item>
+        <item name="android:background">@color/photo_placeholder</item>
+    </style>
+
     <style name="AppTheme.ListItem.Title">
         <item name="android:textAppearance">@style/Base.TextAppearance.AppCompat.Subhead</item>
         <item name="android:textColor">@color/deep_purple_500</item>
