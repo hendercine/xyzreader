@@ -32,14 +32,14 @@
     </style>
 
     <style name="AppTheme.ListItem">
-        <item name="android:colorBackground">@color/deep_purple_500</item>
+        <item name="android:background">@color/deep_purple_500</item>
         <item name="android:layout_marginStart">@dimen/list_item_margin</item>
         <item name="android:layout_marginEnd">@dimen/list_item_margin</item>
         <item name="android:layout_marginTop">@dimen/list_item_card_top_margin</item>
         <item name="android:layout_marginBottom">@dimen/list_item_margin</item>
     </style>
 
-    <style name="AppTheme.ListItem.Thumbnail">
+    <style name="AppTheme.Thumbnail">
         <item name="android:layout_height">@dimen/list_item_thumb_wh</item>
         <item name="android:layout_width">@dimen/list_item_thumb_wh</item>
         <item name="android:layout_marginBottom">@dimen/list_item_text_margin</item>
@@ -48,20 +48,21 @@
         <item name="android:background">@color/photo_placeholder</item>
     </style>
 
-    <style name="AppTheme.ListItem.Title">
+    <style name="AppTheme.ListItemTitle">
         <item name="android:textAppearance">@style/Base.TextAppearance.AppCompat.Subhead</item>
-        <item name="android:textColor">@color/deep_purple_500</item>
+        <item name="fontFamily">sans-serif-black</item>
+        <item name="android:textColor">@color/deep_purple_text</item>
         <item name="android:layout_marginStart">@dimen/list_item_text_margin</item>
         <item name="android:layout_marginEnd">@dimen/list_item_text_margin</item>
         <item name="android:layout_marginTop">@dimen/list_item_text_margin</item>
     </style>
 
-    <style name="AppTheme.ListItem.Title.SubTitle">
+    <style name="AppTheme.ListItemTitle.SubTitle">
         <item name="android:textAppearance">@style/TextAppearance.AppCompat.Body1</item>
-        <item name="android:textColor">@color/theme_secondary_dark</item>
+        <item name="fontFamily">sans-serif</item>
         <item name="android:layout_marginBottom">@dimen/list_item_text_margin</item>
         <item name="android:paddingEnd">@dimen/list_item_subtitle_padding</item>
-        <item name="android:paddingBottom">@dimen/list_item_subtitle_padding</item>
+        <item name="android:paddingTop">@dimen/list_item_subtitle_padding</item>
     </style>
 
 </resources>

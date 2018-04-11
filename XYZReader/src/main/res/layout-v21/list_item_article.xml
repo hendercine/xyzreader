@@ -31,7 +31,7 @@
 
         <TextView
             android:id="@+id/article_title"
-            style="@style/AppTheme.ListItem.Title"
+            style="@style/AppTheme.ListItemTitle"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:ellipsize="end"
@@ -44,7 +44,7 @@
 
         <TextView
             android:id="@+id/article_subtitle"
-            style="@style/AppTheme.ListItem.Title.SubTitle"
+            style="@style/AppTheme.ListItemTitle.SubTitle"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:ellipsize="end"

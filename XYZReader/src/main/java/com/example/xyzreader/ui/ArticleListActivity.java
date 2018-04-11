@@ -7,6 +7,10 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.Loader;
 import android.database.Cursor;
+import android.graphics.PorterDuff;
+import android.graphics.PorterDuffColorFilter;
+import android.graphics.drawable.Drawable;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
@@ -62,6 +66,14 @@ public class ArticleListActivity extends AppCompatActivity implements
 
 
         final View toolbarContainerView = findViewById(R.id.toolbar_container);
+        int sdk = Build.VERSION.SDK_INT;
+
+        if (sdk < Build.VERSION_CODES.LOLLIPOP) {
+            Drawable drawable = getResources().getDrawable(android.R.drawable.dialog_holo_light_frame);
+            drawable.setColorFilter(new PorterDuffColorFilter(getResources()
+                    .getColor(R.color.deep_purple_500), PorterDuff.Mode.MULTIPLY));
+            toolbarContainerView.setBackground(drawable);
+        }
 
         mSwipeRefreshLayout = findViewById(R.id.swipe_refresh_layout);
 
