@@ -21,8 +21,9 @@
         <item name="colorPrimary">@color/deep_purple_500</item>
         <item name="colorPrimaryDark">@color/deep_purple_900</item>
         <item name="colorAccent">@color/lime_a200</item>
+        <item name="android:windowBackground">@color/deep_purple_900</item>
         <item name="android:windowTranslucentNavigation">false</item>
-        <item name="android:windowTranslucentStatus">true</item>
+        <item name="android:windowTranslucentStatus">false</item>
         <item name="android:windowNoTitle">true</item>
         <item name="android:textColor">@color/deep_purple_text</item>
         <item name="android:fontFamily">sans-serif</item>
@@ -33,36 +34,33 @@
 
     <style name="AppTheme.ListItem">
         <item name="android:background">@color/deep_purple_500</item>
-        <item name="android:layout_marginStart">@dimen/list_item_margin</item>
-        <item name="android:layout_marginEnd">@dimen/list_item_margin</item>
-        <item name="android:layout_marginTop">@dimen/list_item_card_top_margin</item>
-        <item name="android:layout_marginBottom">@dimen/list_item_margin</item>
+        <item name="android:layout_margin">@dimen/list_item_margin</item>
     </style>
 
     <style name="AppTheme.Thumbnail">
-        <item name="android:layout_height">@dimen/list_item_thumb_wh</item>
-        <item name="android:layout_width">@dimen/list_item_thumb_wh</item>
-        <item name="android:layout_marginBottom">@dimen/list_item_text_margin</item>
-        <item name="android:layout_marginStart">@dimen/list_item_text_margin</item>
-        <item name="android:layout_marginTop">@dimen/list_item_text_margin</item>
+        <item name="android:scaleType">centerCrop</item>
         <item name="android:background">@color/photo_placeholder</item>
     </style>
 
     <style name="AppTheme.ListItemTitle">
         <item name="android:textAppearance">@style/Base.TextAppearance.AppCompat.Subhead</item>
         <item name="fontFamily">sans-serif-black</item>
-        <item name="android:textColor">@color/deep_purple_text</item>
+        <item name="android:textColor">@color/deep_purple_500</item>
         <item name="android:layout_marginStart">@dimen/list_item_text_margin</item>
         <item name="android:layout_marginEnd">@dimen/list_item_text_margin</item>
         <item name="android:layout_marginTop">@dimen/list_item_text_margin</item>
+        <item name="android:ellipsize">end</item>
+        <item name="android:maxLines">4</item>
     </style>
 
     <style name="AppTheme.ListItemTitle.SubTitle">
         <item name="android:textAppearance">@style/TextAppearance.AppCompat.Body1</item>
         <item name="fontFamily">sans-serif</item>
+        <item name="android:layout_marginTop">@dimen/list_item_margin</item>
         <item name="android:layout_marginBottom">@dimen/list_item_text_margin</item>
-        <item name="android:paddingEnd">@dimen/list_item_subtitle_padding</item>
-        <item name="android:paddingTop">@dimen/list_item_subtitle_padding</item>
+        <item name="android:maxLines">4</item>
+        <item name="android:textAlignment">viewStart</item>
+        <item name="android:typeface">normal</item>
     </style>
 
 </resources>

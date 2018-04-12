@@ -9,9 +9,10 @@
     <dimen name="fab_margin">24dp</dimen>
     <dimen name="list_item_margin">4dp</dimen>
     <dimen name="list_item_text_margin">8dp</dimen>
-    <dimen name="list_item_thumb_wh">100dp</dimen>
-    <dimen name="list_item_card_top_margin">32dp</dimen>
+    <dimen name="list_item_thumb_wh">99dp</dimen>
+    <!--<dimen name="list_item_card_top_margin">32dp</dimen>-->
     <dimen name="list_item_title_text_size">16sp</dimen>
-    <dimen name="list_item_subtitle_padding">16dp</dimen>
+    <!--<dimen name="list_item_subtitle_padding">16dp</dimen>-->
+    <dimen name="list_item_thumb_height">100dp</dimen>
 
 </resources>

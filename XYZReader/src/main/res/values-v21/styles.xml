@@ -2,7 +2,7 @@
 <resources>
 
     <style name="AppTheme.Detail">
-        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:statusBarColor">@color/deep_purple_900</item>
         <item name="android:colorPrimary">@color/deep_purple_500</item>
         <item name="android:colorPrimaryDark">@color/deep_purple_900</item>
         <item name="android:colorAccent">@color/lime_a200</item>
