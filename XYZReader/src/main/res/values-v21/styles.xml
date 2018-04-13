@@ -5,6 +5,6 @@
         <item name="android:statusBarColor">@color/deep_purple_900</item>
         <item name="android:colorPrimary">@color/deep_purple_500</item>
         <item name="android:colorPrimaryDark">@color/deep_purple_900</item>
-        <item name="android:colorAccent">@color/lime_a200</item>
+        <item name="android:colorAccent">@color/blue_a200</item>
     </style>
 </resources>

@@ -20,7 +20,7 @@
     <style name="AppTheme" parent="@style/Theme.AppCompat.Light.NoActionBar">
         <item name="colorPrimary">@color/deep_purple_500</item>
         <item name="colorPrimaryDark">@color/deep_purple_900</item>
-        <item name="colorAccent">@color/lime_a200</item>
+        <item name="colorAccent">@color/blue_a200</item>
         <item name="android:windowBackground">@color/deep_purple_900</item>
         <item name="android:windowTranslucentNavigation">false</item>
         <item name="android:windowTranslucentStatus">false</item>
