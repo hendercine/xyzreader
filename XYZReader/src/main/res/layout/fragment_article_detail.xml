@@ -4,6 +4,20 @@
     android:layout_height="match_parent"
     android:layout_width="match_parent">
 
+    <ImageButton
+        android:id="@+id/share_fab"
+        android:layout_width="56dp"
+        android:layout_height="56dp"
+        android:layout_marginBottom="@dimen/fab_margin"
+        android:layout_marginEnd="@dimen/fab_margin"
+        android:background="@drawable/add_fab_background"
+        android:contentDescription="@string/action_share"
+        android:elevation="@dimen/fab_elevation"
+        android:src="@drawable/ic_share"
+        android:stateListAnimator="@anim/fab_state_list_anim"
+        app:layout_anchor="@id/meta_bar"
+        app:layout_anchorGravity="bottom|end"/>
+
     <com.example.xyzreader.ui.DrawInsetsFrameLayout
         android:id="@+id/draw_insets_frame_layout"
         android:layout_width="match_parent"
@@ -46,6 +60,7 @@
                     android:elevation="2dp"
                     android:maxWidth="@dimen/detail_card_max_width"
                     android:orientation="vertical">
+
 
                     <LinearLayout
                         android:id="@+id/meta_bar"
@@ -97,19 +112,6 @@
             </FrameLayout>
         </com.example.xyzreader.ui.ObservableScrollView>
 
-        <ImageButton
-            android:id="@+id/share_fab"
-            android:layout_width="56dp"
-            android:layout_height="56dp"
-            android:layout_marginBottom="@dimen/fab_margin"
-            android:layout_marginEnd="@dimen/fab_margin"
-            android:background="@drawable/add_fab_background"
-            android:contentDescription="@string/action_share"
-            android:elevation="@dimen/fab_elevation"
-            android:src="@drawable/ic_share"
-            android:stateListAnimator="@anim/fab_state_list_anim"
-            app:layout_anchor="@id/meta_bar"
-            app:layout_anchorGravity="bottom|end"/>
 
     </com.example.xyzreader.ui.DrawInsetsFrameLayout>
 </android.support.design.widget.CoordinatorLayout>
