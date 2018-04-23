@@ -25,7 +25,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <android.support.v4.widget.NestedScrollView
+        <com.example.xyzreader.ui.ObservableScrollView
             android:id="@+id/scrollview"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -116,7 +116,7 @@
                     android:textSize="@dimen/detail_body_text_size"/>
 
             </com.example.xyzreader.ui.MaxWidthLinearLayout>
-        </android.support.v4.widget.NestedScrollView>
+        </com.example.xyzreader.ui.ObservableScrollView>
     </com.example.xyzreader.ui.DrawInsetsFrameLayout>
 </android.support.design.widget.CoordinatorLayout>
 
