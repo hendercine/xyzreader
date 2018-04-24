@@ -8,6 +8,20 @@
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:ignore="MergeRootFrame">
 
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/share_fab"
+        android:layout_width="56dp"
+        android:layout_height="56dp"
+        android:layout_marginBottom="@dimen/fab_margin"
+        android:layout_marginEnd="@dimen/fab_margin"
+        android:background="@drawable/add_fab_background"
+        android:src="@drawable/ic_share"
+        android:contentDescription="@string/action_share"
+        app:elevation="@dimen/fab_elevation"
+        app:layout_scrollFlags="scroll|snap"
+        app:layout_anchor="@id/meta_bar"
+        app:layout_anchorGravity="bottom|end"/>
+
     <!--<com.example.xyzreader.ui.DrawInsetsFrameLayout-->
         <!--android:id="@+id/draw_insets_frame_layout"-->
         <!--android:layout_width="match_parent"-->
@@ -31,9 +45,6 @@
             style="@style/AppTheme.DetailParentLayout"
             android:layout_height="match_parent"
             android:layout_width="match_parent"
-            app:expandedTitleMargin="@dimen/sixteen_dip_margin"
-            app:expandedTitleMarginBottom="@dimen/expanded_title_margin_bottom"
-            app:expandedTitleTextAppearance="@style/AppTheme.ExpandedTitleTextAppearance"
             app:layout_scrollFlags="scroll"
             app:toolbarId="@+id/toolbar">
 
@@ -113,20 +124,19 @@
         android:id="@+id/article_body_scroll_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@color/theme_secondary_light"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
         <TextView
             android:id="@+id/article_body"
-            style="?android:attr/textAppearanceMedium"
+            style="@style/AppTheme.ArticleText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/detail_inner_horiz_margin"
             android:layout_marginRight="@dimen/detail_inner_horiz_margin"
             android:lineSpacingMultiplier="@fraction/detail_body_line_spacing_multiplier"
+            android:paddingTop="@dimen/sixteen_dip_margin"
             android:paddingBottom="@dimen/detail_body_bottom_margin"
-            android:textColor="#000000"
-            android:textColorLink="@color/blue_a200"
-            android:textSize="@dimen/detail_body_text_size"
             tools:text="@tools:sample/lorem/random"/>
 
     </android.support.v4.widget.NestedScrollView>
@@ -134,21 +144,6 @@
     <!--</com.example.xyzreader.ui.MaxWidthLinearLayout>-->
         <!--</com.example.xyzreader.ui.ObservableScrollView>-->
     <!--</com.example.xyzreader.ui.DrawInsetsFrameLayout>-->
-
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/share_fab"
-        android:layout_width="56dp"
-        android:layout_height="56dp"
-        android:layout_marginBottom="@dimen/fab_margin"
-        android:layout_marginEnd="@dimen/fab_margin"
-        android:background="@drawable/add_fab_background"
-        android:src="@drawable/ic_share"
-        android:contentDescription="@string/action_share"
-        app:elevation="@dimen/fab_elevation"
-        app:stateListAnimator="@animator/fab_state_list_anim"
-        app:layout_scrollFlags="scroll|snap"
-        app:layout_anchor="@id/meta_bar"
-        app:layout_anchorGravity="bottom|end"/>
 
 </android.support.design.widget.CoordinatorLayout>
 
