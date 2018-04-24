@@ -19,32 +19,26 @@ import com.example.xyzreader.R;
 import com.example.xyzreader.data.ArticleLoader;
 import com.example.xyzreader.data.ItemsContract;
 
+import butterknife.BindView;
+
 /**
  * An activity representing a single Article detail screen, letting you swipe between articles.
  */
 public class ArticleDetailActivity extends AppCompatActivity
         implements LoaderManager.LoaderCallbacks<Cursor> {
 
+    public final static String EXTRA_CURRENT_ID = "EXTRA_CURRENT_ID";
     private Cursor mCursor;
-    private long mStartId;
-
-    private long mSelectedItemId;
-    private int mSelectedItemUpButtonFloor = Integer.MAX_VALUE;
-    private int mTopInset;
-
-    private ViewPager mPager;
+    private long mCurrentId;
     private MyPagerAdapter mPagerAdapter;
-    private View mUpButtonContainer;
-    private View mUpButton;
+
+    @BindView(R.id.pager)
+    ViewPager mPager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            getWindow().getDecorView().setSystemUiVisibility(
-                    View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN |
-                            View.SYSTEM_UI_FLAG_LAYOUT_STABLE);
-        }
+
         setContentView(R.layout.activity_article_detail);
 
         getSupportLoaderManager().initLoader(0, null, this);
@@ -104,8 +98,8 @@ public class ArticleDetailActivity extends AppCompatActivity
 
         if (savedInstanceState == null) {
             if (getIntent() != null && getIntent().getData() != null) {
-                mStartId = ItemsContract.Items.getItemId(getIntent().getData());
-                mSelectedItemId = mStartId;
+                mCurrentId = ItemsContract.Items.getItemId(getIntent().getData());
+                mSelectedItemId = mCurrentId;
             }
         }
     }
@@ -122,18 +116,18 @@ public class ArticleDetailActivity extends AppCompatActivity
         mPagerAdapter.notifyDataSetChanged();
 
         // Select the start ID
-        if (mStartId > 0) {
+        if (mCurrentId > 0) {
             mCursor.moveToFirst();
             // TODO: optimize
             while (!mCursor.isAfterLast()) {
-                if (mCursor.getLong(ArticleLoader.Query._ID) == mStartId) {
+                if (mCursor.getLong(ArticleLoader.Query._ID) == mCurrentId) {
                     final int position = mCursor.getPosition();
                     mPager.setCurrentItem(position, false);
                     break;
                 }
                 mCursor.moveToNext();
             }
-            mStartId = 0;
+            mCurrentId = 0;
         }
     }
 
