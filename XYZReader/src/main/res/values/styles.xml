@@ -50,7 +50,7 @@
         <item name="android:textColor">@color/theme_secondary_light</item>
     </style>
 
-    <style name="AppTheme.ArticleText">
+    <style name="AppTheme.ArticleBody">
         <item name="android:textColor">@color/theme_secondary_text</item>
         <item name="android:background">@color/theme_secondary_light</item>
         <item name="android:textAppearance">@style/TextAppearance.AppCompat.Medium</item>
