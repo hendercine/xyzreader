@@ -21,7 +21,7 @@
     <color name="deep_purple_500">#673AB7</color>
     <color name="deep_purple_900">#311B92</color>
     <color name="deep_purple_light">#9a67ea</color>
-    <color name="deep_purple_text">#ffffff</color>
+    <color name="over_deep_purple_text">#ffffff</color>
 
     <color name="blue_a200">#448AFF</color>
     <color name="theme_secondary_dark">#707070</color>
