@@ -3,6 +3,9 @@ package com.example.xyzreader.ui;
 import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -13,6 +16,8 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.LoaderManager;
 import android.support.v4.app.ShareCompat;
 import android.support.v4.content.Loader;
+import android.support.v7.graphics.Palette;
+import android.support.v7.widget.CardView;
 import android.text.Html;
 import android.text.format.DateUtils;
 import android.view.LayoutInflater;
@@ -24,8 +29,11 @@ import android.widget.TextView;
 import android.widget.Toolbar;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.DataSource;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.bumptech.glide.load.engine.GlideException;
 import com.bumptech.glide.request.RequestListener;
+import com.bumptech.glide.request.RequestOptions;
 import com.bumptech.glide.request.target.Target;
 import com.example.xyzreader.R;
 import com.example.xyzreader.data.ArticleLoader;
@@ -72,9 +80,9 @@ public class ArticleDetailFragment extends Fragment implements
     @Nullable
     @BindView(R.id.app_bar)
     AppBarLayout mAppBarLayout;
-//    @Nullable
-//    @BindView(R.id.card)
-//    CardView mCard;
+    @Nullable
+    @BindView(R.id.card)
+    CardView mCard;
 
     private SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.sss");
     // Use default locale format
@@ -164,15 +172,16 @@ public class ArticleDetailFragment extends Fragment implements
         final String body = Html.fromHtml(cursor.getString(ArticleLoader.Query.BODY)).toString();
         String photo = cursor.getString(ArticleLoader.Query.PHOTO_URL);
 
-        if (mToolbar != null) {
-//            if (mCard == null) {
+        if (mToolbar != null && Build.VERSION.SDK_INT >= Build.VERSION_CODES
+                .LOLLIPOP) {
+            if (mCard == null) {
                 mToolbar.setTitle(title);
-//            }
+            }
             mToolbar.setNavigationIcon(R.drawable.ic_arrow_back_black_24dp);
             mToolbar.setNavigationOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    getActivity().finish();
+                    Objects.requireNonNull(getActivity()).finish();
                 }
             });
         }
@@ -183,18 +192,16 @@ public class ArticleDetailFragment extends Fragment implements
 
         Glide.with(this)
                 .load(photo)
-                .diskCacheStrategy(DiskCacheStrategy.ALL)
-                .listener(new RequestListener<String, GlideDrawable>() {
+                .apply(new RequestOptions().diskCacheStrategy(DiskCacheStrategy.ALL))
+                .listener(new RequestListener<Drawable>() {
                     @Override
-                    public boolean onException(Exception e, String model, Target<GlideDrawable> target, boolean isFirstResource) {
+                    public boolean onLoadFailed(@Nullable GlideException e, Object model, Target<Drawable> target, boolean isFirstResource) {
                         return false;
                     }
 
                     @Override
-                    public boolean onResourceReady(GlideDrawable resource, String model,
-                                                   Target<GlideDrawable> target,
-                                                   boolean isFromMemoryCache, boolean isFirstResource) {
-                        Bitmap bitmap = ((GlideBitmapDrawable) resource.getCurrent()).getBitmap();
+                    public boolean onResourceReady(Drawable resource, Object model, Target<Drawable> target, DataSource dataSource, boolean isFirstResource) {
+                        Bitmap bitmap = ((BitmapDrawable) resource.getCurrent()).getBitmap();
                         changeUIColors(bitmap);
                         return false;
                     }
@@ -213,19 +220,26 @@ public class ArticleDetailFragment extends Fragment implements
     }
 
     @Override
-    public void onLoaderReset(@NonNull Loader<Cursor> cursorLoader) {
-        mCursor = null;
-        bindViews();
+    public void onLoaderReset(@NonNull Loader<Cursor> loader) { }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        unbinder.unbind();
     }
 
-    public int getUpButtonFloor() {
-        if (mPhotoContainerView == null || mPhotoView.getHeight() == 0) {
-            return Integer.MAX_VALUE;
-        }
-
-        // account for parallax
-        return mIsCard
-                ? (int) mPhotoContainerView.getTranslationY() + mPhotoView.getHeight() - mScrollY
-                : mPhotoView.getHeight() - mScrollY;
+    private void changeUIColors(Bitmap bitmap) {
+        Palette.from(bitmap).generate(new Palette.PaletteAsyncListener() {
+            @Override
+            public void onGenerated(@NonNull Palette palette) {
+                int defaultColor = 0xFF333333;
+                int darkMutedColor = palette.getDarkMutedColor(defaultColor);
+                metaBar.setBackgroundColor(darkMutedColor);
+                if (mCollapsingToolbarLayout != null) {
+                    mCollapsingToolbarLayout.setContentScrimColor(darkMutedColor);
+                    mCollapsingToolbarLayout.setStatusBarScrimColor(darkMutedColor);
+                }
+            }
+        });
     }
 }
