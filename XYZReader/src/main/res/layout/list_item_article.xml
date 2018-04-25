@@ -32,7 +32,7 @@
             android:layout_gravity="bottom">
 
             <TextView
-                android:id="@+id/article_title"
+                android:id="@+id/list_article_title"
                 style="@style/AppTheme.ListItemTitle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

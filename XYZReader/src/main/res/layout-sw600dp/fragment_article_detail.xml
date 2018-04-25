@@ -20,7 +20,8 @@
         app:elevation="@dimen/fab_elevation"
         app:layout_scrollFlags="scroll|snap"
         app:layout_anchor="@id/meta_bar"
-        app:layout_anchorGravity="bottom|end"/>
+        app:layout_anchorGravity="bottom|end"
+        />
 
     <android.support.design.widget.AppBarLayout
         android:id="@+id/app_bar"
@@ -95,7 +96,7 @@
                         android:paddingTop="@dimen/detail_metabar_vert_padding">
 
                         <TextView
-                            android:id="@+id/article_title"
+                            android:id="@+id/detail_article_title"
                             style="@style/AppTheme.ExpandedTitleTextAppearance.ArticleTitle"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"

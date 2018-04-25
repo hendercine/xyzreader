@@ -2,8 +2,6 @@ package com.example.xyzreader.ui;
 
 import android.content.Intent;
 import android.database.Cursor;
-import android.graphics.Bitmap;
-import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Bundle;
@@ -16,17 +14,15 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.LoaderManager;
 import android.support.v4.app.ShareCompat;
 import android.support.v4.content.Loader;
-import android.support.v7.graphics.Palette;
 import android.support.v7.widget.CardView;
+import android.support.v7.widget.Toolbar;
 import android.text.Html;
 import android.text.format.DateUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toolbar;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.DataSource;
@@ -38,8 +34,6 @@ import com.bumptech.glide.request.target.Target;
 import com.example.xyzreader.R;
 import com.example.xyzreader.data.ArticleLoader;
 
-import java.text.SimpleDateFormat;
-import java.util.GregorianCalendar;
 import java.util.Objects;
 
 import butterknife.BindView;
@@ -61,12 +55,12 @@ public class ArticleDetailFragment extends Fragment implements
 
     @BindView(R.id.photo)
     ImageView mPhotoView;
-    @BindView(R.id.meta_bar)
-    LinearLayout metaBar;
-    @BindView(R.id.article_title)
-    TextView mTitleView;
-    @BindView(R.id.article_byline)
-    TextView mByLineView;
+//    @BindView(R.id.meta_bar)
+//    LinearLayout metaBar;
+//    @BindView(R.id.detail_article_title)
+//    TextView mTitleView;
+//    @BindView(R.id.article_byline)
+//    TextView mByLineView;
     @BindView(R.id.article_body)
     TextView mBodyView;
     @BindView(R.id.share_fab)
@@ -83,12 +77,6 @@ public class ArticleDetailFragment extends Fragment implements
     @Nullable
     @BindView(R.id.card)
     CardView mCard;
-
-    private SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.sss");
-    // Use default locale format
-    private SimpleDateFormat outputFormat = new SimpleDateFormat();
-    // Most time functions can only handle 1902 - 2037
-    private GregorianCalendar START_OF_EPOCH = new GregorianCalendar(2, 1, 1);
 
     /**
      * Mandatory empty constructor for the fragment manager to instantiate the
@@ -120,7 +108,6 @@ public class ArticleDetailFragment extends Fragment implements
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-
         // In support library r8, calling initLoader for a fragment in a FragmentPagerAdapter in
         // the fragment's onCreate may cause the same LoaderManager to be dealt to multiple
         // fragments because their mIndex is -1 (haven't been added to the activity yet). Thus,
@@ -134,17 +121,6 @@ public class ArticleDetailFragment extends Fragment implements
         View view = inflater.inflate(R.layout.fragment_article_detail,
                 container, false);
         unbinder = ButterKnife.bind(this, view);
-
-        // Click to share method for FAB
-        mShareFab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(Intent.createChooser(ShareCompat.IntentBuilder.from(Objects.requireNonNull(getActivity()))
-                        .setType("text/plain")
-                        .setText("Some sample text")
-                        .getIntent(), getString(R.string.action_share)));
-            }
-        });
 
         return view;
     }
@@ -185,9 +161,9 @@ public class ArticleDetailFragment extends Fragment implements
                 }
             });
         }
-
-        mTitleView.setText(title);
-        mByLineView.setText(author);
+//
+//        mTitleView.setText(title);
+//        mByLineView.setText(author);
         mBodyView.setText(body);
 
         Glide.with(this)
@@ -201,13 +177,20 @@ public class ArticleDetailFragment extends Fragment implements
 
                     @Override
                     public boolean onResourceReady(Drawable resource, Object model, Target<Drawable> target, DataSource dataSource, boolean isFirstResource) {
-                        Bitmap bitmap = ((BitmapDrawable) resource.getCurrent()).getBitmap();
-                        changeUIColors(bitmap);
+//                        Bitmap bitmap = ((BitmapDrawable) resource.getCurrent()).getBitmap();
+//                        changeUIColors(bitmap);
+//                        Slide slide = new Slide();
+//                        slide.setSlideEdge(Gravity.END);
+//
+//                        TransitionManager.beginDelayedTransition(Objects.requireNonNull(mAppBarLayout), slide);
+//                        mTitleView.setVisibility(View.VISIBLE);
+
                         return false;
                     }
                 })
                 .into(mPhotoView);
 
+        // Set FloatingActionButton to display a share dialog.
         mShareFab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -228,18 +211,18 @@ public class ArticleDetailFragment extends Fragment implements
         unbinder.unbind();
     }
 
-    private void changeUIColors(Bitmap bitmap) {
-        Palette.from(bitmap).generate(new Palette.PaletteAsyncListener() {
-            @Override
-            public void onGenerated(@NonNull Palette palette) {
-                int defaultColor = 0xFF333333;
-                int darkMutedColor = palette.getDarkMutedColor(defaultColor);
-                metaBar.setBackgroundColor(darkMutedColor);
-                if (mCollapsingToolbarLayout != null) {
-                    mCollapsingToolbarLayout.setContentScrimColor(darkMutedColor);
-                    mCollapsingToolbarLayout.setStatusBarScrimColor(darkMutedColor);
-                }
-            }
-        });
-    }
+//    private void changeUIColors(Bitmap bitmap) {
+//        Palette.from(bitmap).generate(new Palette.PaletteAsyncListener() {
+//            @Override
+//            public void onGenerated(@NonNull Palette palette) {
+//                int defaultColor = 0x673AB7;
+//                int darkMutedColor = palette.getDarkMutedColor(defaultColor);
+//                metaBar.setBackgroundColor(darkMutedColor);
+//                if (mCollapsingToolbarLayout != null) {
+//                    mCollapsingToolbarLayout.setContentScrimColor(darkMutedColor);
+//                    mCollapsingToolbarLayout.setStatusBarScrimColor(darkMutedColor);
+//                }
+//            }
+//        });
+//    }
 }
