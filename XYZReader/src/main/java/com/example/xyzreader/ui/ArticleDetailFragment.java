@@ -3,7 +3,6 @@ package com.example.xyzreader.ui;
 import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.drawable.Drawable;
-import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -59,8 +58,8 @@ public class ArticleDetailFragment extends Fragment implements
 //    LinearLayout metaBar;
 //    @BindView(R.id.detail_article_title)
 //    TextView mTitleView;
-//    @BindView(R.id.article_byline)
-//    TextView mByLineView;
+    @BindView(R.id.article_byline)
+    TextView mByLineView;
     @BindView(R.id.article_body)
     TextView mBodyView;
     @BindView(R.id.share_fab)
@@ -148,22 +147,25 @@ public class ArticleDetailFragment extends Fragment implements
         final String body = Html.fromHtml(cursor.getString(ArticleLoader.Query.BODY)).toString();
         String photo = cursor.getString(ArticleLoader.Query.PHOTO_URL);
 
-        if (mToolbar != null && Build.VERSION.SDK_INT >= Build.VERSION_CODES
-                .LOLLIPOP) {
+        mByLineView.setText(author);
+
+//        if (mToolbar != null && Build.VERSION.SDK_INT >= Build.VERSION_CODES
+//                .LOLLIPOP) {
             if (mCard == null) {
-                mToolbar.setTitle(title);
+                Objects.requireNonNull(mToolbar).setTitle(title);
             }
-            mToolbar.setNavigationIcon(R.drawable.ic_arrow_back_black_24dp);
+            Objects.requireNonNull(mToolbar).setNavigationIcon(R.drawable.ic_arrow_back_black_24dp);
+            mToolbar.setSubtitle(author);
             mToolbar.setNavigationOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     Objects.requireNonNull(getActivity()).finish();
                 }
             });
-        }
+//        }
 //
 //        mTitleView.setText(title);
-//        mByLineView.setText(author);
+
         mBodyView.setText(body);
 
         Glide.with(this)
