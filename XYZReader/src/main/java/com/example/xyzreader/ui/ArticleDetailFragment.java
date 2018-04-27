@@ -69,7 +69,7 @@ public class ArticleDetailFragment extends Fragment implements
     @BindView(R.id.detail_toolbar)
     Toolbar mToolbar;
     @Nullable
-    @BindView(R.id.toolbar_layout)
+    @BindView(R.id.collapsing_toolbar)
     CollapsingToolbarLayout mCollapsingToolbarLayout;
     @Nullable
     @BindView(R.id.app_bar)
