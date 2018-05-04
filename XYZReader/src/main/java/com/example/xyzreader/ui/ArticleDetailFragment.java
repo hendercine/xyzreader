@@ -53,6 +53,7 @@ public class ArticleDetailFragment extends Fragment implements
 
     private Unbinder unbinder;
     private long mItemId;
+    private String mTitle;
 
     @BindView(R.id.photo)
     ImageView mPhotoView;
@@ -143,7 +144,7 @@ public class ArticleDetailFragment extends Fragment implements
             return;
         }
 
-        final String title = cursor.getString(ArticleLoader.Query.TITLE);
+        mTitle = cursor.getString(ArticleLoader.Query.TITLE);
         String author = Html.fromHtml(
                 DateUtils.getRelativeTimeSpanString(
                         cursor.getLong(ArticleLoader.Query.PUBLISHED_DATE),
@@ -159,14 +160,14 @@ public class ArticleDetailFragment extends Fragment implements
 //        if (mToolbar != null && Build.VERSION.SDK_INT >= Build.VERSION_CODES
 //                .LOLLIPOP) {
             if (mCard == null) {
-                int titleMaxWidth = Objects.requireNonNull(mToolbar).getWidth();
-                int currentTitleWidth = measureTitleWidth(title);
+//                int titleMaxWidth = Objects.requireNonNull(mToolbar).getWidth();
+//                int currentTitleWidth = measureTitleWidth(title);
+//
+//                if (currentTitleWidth > titleMaxWidth) {
+//                    mToolbar.setTitleTextAppearance(getContext(), R.style.AppTheme_ExpandedTitleTextAppearance_OverFlow);
+//                }
 
-                if (currentTitleWidth < titleMaxWidth) {
-                    mToolbar.setTitleTextAppearance(getContext(), R.style.AppTheme_ExpandedTitleTextAppearance);
-                }
-
-                Objects.requireNonNull(mToolbar).setTitle(title);
+                Objects.requireNonNull(mToolbar).setTitle(mTitle);
             }
             Objects.requireNonNull(mToolbar).setNavigationIcon(R.drawable.ic_arrow_back_black_24dp);
             mToolbar.setSubtitle(author);

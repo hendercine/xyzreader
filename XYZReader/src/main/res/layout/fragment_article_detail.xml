@@ -96,7 +96,6 @@
                 android:id="@+id/detail_toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="?android:attr/actionBarSize"
-                app:contentInsetStart="@dimen/sixteen_dip_margin"
                 app:layout_collapseMode="pin"
                 app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
                 tools:text="App Name">
