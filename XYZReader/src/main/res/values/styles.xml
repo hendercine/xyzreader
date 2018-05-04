@@ -39,6 +39,10 @@
         <item name="android:textStyle">bold</item>
     </style>
 
+    <style name="AppTheme.ExpandedTitleTextAppearance.OverFlow">
+        <item name="android:textSize">@dimen/overflow_toolbar_title_size</item>
+    </style>
+
     <style name="AppTheme.ExpandedTitleTextAppearance.ArticleTitle">
         <item name="android:textAppearance">@style/TextAppearance.AppCompat.Large</item>
         <item name="android:textSize">@dimen/detail_title_text_size</item>

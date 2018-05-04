@@ -16,10 +16,12 @@ import android.support.v4.content.Loader;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.Toolbar;
 import android.text.Html;
+import android.text.TextPaint;
 import android.text.format.DateUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -54,6 +56,8 @@ public class ArticleDetailFragment extends Fragment implements
 
     @BindView(R.id.photo)
     ImageView mPhotoView;
+
+//    TODO: Clear unneccessary commented code
 //    @BindView(R.id.meta_bar)
 //    LinearLayout metaBar;
 //    @BindView(R.id.detail_article_title)
@@ -62,6 +66,9 @@ public class ArticleDetailFragment extends Fragment implements
     TextView mByLineView;
     @BindView(R.id.article_body)
     TextView mBodyView;
+    @BindView(R.id.share_action)
+    ImageButton mShareAction;
+    @Nullable
     @BindView(R.id.share_fab)
     FloatingActionButton mShareFab;
     @Nullable
@@ -152,6 +159,13 @@ public class ArticleDetailFragment extends Fragment implements
 //        if (mToolbar != null && Build.VERSION.SDK_INT >= Build.VERSION_CODES
 //                .LOLLIPOP) {
             if (mCard == null) {
+                int titleMaxWidth = Objects.requireNonNull(mToolbar).getWidth();
+                int currentTitleWidth = measureTitleWidth(title);
+
+                if (currentTitleWidth < titleMaxWidth) {
+                    mToolbar.setTitleTextAppearance(getContext(), R.style.AppTheme_ExpandedTitleTextAppearance);
+                }
+
                 Objects.requireNonNull(mToolbar).setTitle(title);
             }
             Objects.requireNonNull(mToolbar).setNavigationIcon(R.drawable.ic_arrow_back_black_24dp);
@@ -193,15 +207,34 @@ public class ArticleDetailFragment extends Fragment implements
                 .into(mPhotoView);
 
         // Set FloatingActionButton to display a share dialog.
-        mShareFab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(Intent.createChooser(ShareCompat.IntentBuilder.from(getActivity())
-                        .setType("text/plain")
-                        .setText(body)
-                        .getIntent(), getString(R.string.action_share)));
-            }
-        });
+        if (mShareFab != null) {
+            mShareFab.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    startActivity(Intent.createChooser(ShareCompat.IntentBuilder.from(Objects.requireNonNull(getActivity()))
+                            .setType("text/plain")
+                            .setText(body)
+                            .getIntent(), getString(R.string.action_share)));
+                }
+            });
+        } else if (mShareAction != null){
+            mShareAction.setVisibility(View.VISIBLE);
+            mShareAction.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    startActivity(Intent.createChooser(ShareCompat.IntentBuilder.from(Objects.requireNonNull(getActivity()))
+                            .setType("text/plain")
+                            .setText(body)
+                            .getIntent(), getString(R.string.action_share)));
+                }
+            });
+
+        }
+    }
+
+    private int measureTitleWidth(String title) {
+        TextPaint paint = new TextPaint();
+        return (int) paint.measureText(title);
     }
 
     @Override

@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <!--TODO: Clear unneccessary commented code -->
     <!--<android.support.design.widget.FloatingActionButton-->
         <!--android:id="@+id/share_fab"-->
         <!--android:layout_width="56dp"-->
@@ -101,10 +102,14 @@
                 tools:text="App Name">
 
                 <ImageButton
+                    android:id="@+id/share_action"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/ic_share"
-                    android:visibility="invisible"/>
+                    android:layout_gravity="end"
+                    android:layout_marginEnd="@dimen/sixteen_dip_margin"
+                    android:background="@drawable/ic_share"
+                    android:visibility="invisible"
+                    android:contentDescription="@string/share_button"/>
 
             </android.support.v7.widget.Toolbar>
 

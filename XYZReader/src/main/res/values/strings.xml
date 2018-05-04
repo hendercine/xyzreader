@@ -14,5 +14,6 @@
 
 
     <string name="list_item_title">Article Title</string>
+    <string name="share_button">Share Button</string>
 
 </resources>
