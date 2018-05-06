@@ -11,9 +11,13 @@
     <string name="list_item_subtitle">
         August 25, 1900 \nby James Henderson
     </string>
-
+    <string name="toolbar_subtitle">
+        August 25, 1900 by James Henderson
+    </string>
 
     <string name="list_item_title">Article Title</string>
     <string name="share_button">Share Button</string>
+    <string name="back_button">Back Button</string>
+    <string name="long_book_title">Ebooks, Neither E, Nor Books</string>
 
 </resources>

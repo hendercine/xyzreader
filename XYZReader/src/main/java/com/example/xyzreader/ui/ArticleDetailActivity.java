@@ -1,12 +1,15 @@
 package com.example.xyzreader.ui;
 
 import android.database.Cursor;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.LoaderManager;
 import android.support.v4.content.Loader;
 import android.support.v4.view.ViewPager;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 
 import com.example.xyzreader.R;
 import com.example.xyzreader.data.ArticleLoader;
@@ -26,6 +29,8 @@ public class ArticleDetailActivity extends AppCompatActivity
     private long mCurrentId;
     private MyPagerAdapter mPagerAdapter;
 
+    @BindView(R.id.toolbar)
+    Toolbar mToolbar;
     @BindView(R.id.pager)
     ViewPager mPager;
 
@@ -34,6 +39,18 @@ public class ArticleDetailActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_article_detail);
         ButterKnife.bind(this);
+
+        if (Build.VERSION.SDK_INT <= Build.VERSION_CODES.LOLLIPOP) {
+            setSupportActionBar(mToolbar);
+        }
+
+        final ActionBar ab = getSupportActionBar();
+        if (ab != null) {
+            ab.setDisplayShowHomeEnabled(true);
+            ab.setDisplayHomeAsUpEnabled(true);
+            ab.setDisplayShowCustomEnabled(true);
+            ab.setDisplayShowTitleEnabled(false);
+        }
 
         if (savedInstanceState == null) {
             if (getIntent() != null && getIntent().getData() != null) {

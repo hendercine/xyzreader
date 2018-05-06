@@ -3,6 +3,7 @@ package com.example.xyzreader.ui;
 import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.drawable.Drawable;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -54,15 +55,15 @@ public class ArticleDetailFragment extends Fragment implements
     private long mItemId;
     private String mTitle;
 
-    @BindView(R.id.photo)
+    @BindView(R.id.appbar_backdrop)
     ImageView mPhotoView;
 
 //    TODO: Clear unneccessary commented code
 //    @BindView(R.id.meta_bar)
 //    LinearLayout metaBar;
-//    @BindView(R.id.detail_article_title)
-//    TextView mTitleView;
-    @BindView(R.id.article_byline)
+    @BindView(R.id.toolbar_title)
+    TextView mToolbarTitleView;
+    @BindView(R.id.subtitle_byline)
     TextView mByLineView;
     @BindView(R.id.article_body)
     TextView mBodyView;
@@ -152,12 +153,20 @@ public class ArticleDetailFragment extends Fragment implements
                         + " by "
                         + cursor.getString(ArticleLoader.Query.AUTHOR)).toString();
         final String body = Html.fromHtml(cursor.getString(ArticleLoader.Query.BODY)).toString();
-        String photo = cursor.getString(ArticleLoader.Query.PHOTO_URL);
+        String appbarBackdrop = cursor.getString(ArticleLoader.Query.PHOTO_URL);
 
+        mToolbarTitleView.setText(mTitle);
         mByLineView.setText(author);
+        Objects.requireNonNull(mToolbar).setNavigationIcon(R.drawable.ic_arrow_back_black_24dp);
+        mToolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Objects.requireNonNull(getActivity()).finish();
+            }
+        });
 
-//        if (mToolbar != null && Build.VERSION.SDK_INT >= Build.VERSION_CODES
-//                .LOLLIPOP) {
+        if (mToolbar != null && Build.VERSION.SDK_INT >= Build.VERSION_CODES
+                .LOLLIPOP) {
             if (mCard == null) {
 //                int titleMaxWidth = Objects.requireNonNull(mToolbar).getWidth();
 //                int currentTitleWidth = measureTitleWidth(title);
@@ -168,22 +177,13 @@ public class ArticleDetailFragment extends Fragment implements
 
                 Objects.requireNonNull(mToolbar).setTitle(mTitle);
             }
-            Objects.requireNonNull(mToolbar).setNavigationIcon(R.drawable.ic_arrow_back_black_24dp);
             mToolbar.setSubtitle(author);
-            mToolbar.setNavigationOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Objects.requireNonNull(getActivity()).finish();
-                }
-            });
-//        }
-//
-//        mTitleView.setText(title);
+        }
 
         mBodyView.setText(body);
 
         Glide.with(this)
-                .load(photo)
+                .load(appbarBackdrop)
                 .apply(new RequestOptions().diskCacheStrategy(DiskCacheStrategy.ALL))
                 .listener(new RequestListener<Drawable>() {
                     @Override

@@ -50,7 +50,7 @@
                 tools:ignore="ContentDescription"/>
 
             <ImageView
-                android:id="@+id/photo"
+                android:id="@+id/appbar_backdrop"
                 style="@style/AppTheme.Thumbnail"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/app_bar_height"
@@ -59,7 +59,7 @@
                 tools:ignore="ContentDescription"/>
 
             <TextView
-            android:id="@+id/article_byline"
+            android:id="@+id/subtitle_byline"
             style="@style/AppTheme.ArticleByLine"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

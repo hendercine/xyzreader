@@ -20,5 +20,7 @@
     <dimen name="app_bar_height">320dp</dimen>
     <dimen name="action_bar_height">72dp</dimen>
     <dimen name="overflow_toolbar_title_size">24sp</dimen>
+    <dimen name="toolbar_button_size">24dp</dimen>
+    <dimen name="default_toolbar_margin">8dp</dimen>
 
 </resources>
