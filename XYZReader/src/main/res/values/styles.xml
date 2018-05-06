@@ -52,7 +52,7 @@
     <style name="AppTheme.ArticleByLine">
         <item name="android:textAppearance">@style/TextAppearance.AppCompat.Small</item>
         <item name="android:textColor">@color/over_deep_purple_text</item>
-        <item name="android:layout_marginStart">@dimen/sixteen_dip_margin</item>
+        <item name="android:layout_marginStart">@dimen/detail_byline_margin_start</item>
     </style>
 
     <style name="AppTheme.ArticleBody">

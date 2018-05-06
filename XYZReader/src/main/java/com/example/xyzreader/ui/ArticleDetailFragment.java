@@ -16,7 +16,6 @@ import android.support.v4.content.Loader;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.Toolbar;
 import android.text.Html;
-import android.text.TextPaint;
 import android.text.format.DateUtils;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -231,11 +230,6 @@ public class ArticleDetailFragment extends Fragment implements
             });
 
         }
-    }
-
-    private int measureTitleWidth(String title) {
-        TextPaint paint = new TextPaint();
-        return (int) paint.measureText(title);
     }
 
     @Override
