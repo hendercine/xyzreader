@@ -52,7 +52,6 @@ public class ArticleDetailFragment extends Fragment implements
 
     private Unbinder unbinder;
     private long mItemId;
-    private String mTitle;
 
     @BindView(R.id.photo)
     ImageView mPhotoView;
@@ -60,12 +59,14 @@ public class ArticleDetailFragment extends Fragment implements
 //    TODO: Clear unneccessary commented code
 //    @BindView(R.id.meta_bar)
 //    LinearLayout metaBar;
-//    @BindView(R.id.detail_article_title)
-//    TextView mTitleView;
+    @BindView(R.id.detail_article_title)
+    TextView mTitleView;
     @BindView(R.id.article_byline)
     TextView mByLineView;
     @BindView(R.id.article_body)
     TextView mBodyView;
+//    @BindView(R.id.back_btn)
+//    ImageButton mBackButton;
     @BindView(R.id.share_action)
     ImageButton mShareAction;
     @Nullable
@@ -143,7 +144,7 @@ public class ArticleDetailFragment extends Fragment implements
             return;
         }
 
-        mTitle = cursor.getString(ArticleLoader.Query.TITLE);
+        String title = cursor.getString(ArticleLoader.Query.TITLE);
         String author = Html.fromHtml(
                 DateUtils.getRelativeTimeSpanString(
                         cursor.getLong(ArticleLoader.Query.PUBLISHED_DATE),
@@ -154,11 +155,13 @@ public class ArticleDetailFragment extends Fragment implements
         final String body = Html.fromHtml(cursor.getString(ArticleLoader.Query.BODY)).toString();
         String photo = cursor.getString(ArticleLoader.Query.PHOTO_URL);
 
+        mTitleView.setText(title);
         mByLineView.setText(author);
 
-//        if (mToolbar != null && Build.VERSION.SDK_INT >= Build.VERSION_CODES
-//                .LOLLIPOP) {
-            if (mCard == null) {
+        if (mToolbar != null) {
+//            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                Objects.requireNonNull(mToolbar).setNavigationIcon(R.drawable.ic_arrow_back_black_24dp);
+                if (mCard == null) {
 //                int titleMaxWidth = Objects.requireNonNull(mToolbar).getWidth();
 //                int currentTitleWidth = measureTitleWidth(title);
 //
@@ -166,19 +169,33 @@ public class ArticleDetailFragment extends Fragment implements
 //                    mToolbar.setTitleTextAppearance(getContext(), R.style.AppTheme_ExpandedTitleTextAppearance_OverFlow);
 //                }
 
-                Objects.requireNonNull(mToolbar).setTitle(mTitle);
-            }
-            Objects.requireNonNull(mToolbar).setNavigationIcon(R.drawable.ic_arrow_back_black_24dp);
-            mToolbar.setSubtitle(author);
+                    Objects.requireNonNull(mToolbar).setTitle(title);
+                }
+                mToolbar.setSubtitle(author);
+//            } else {
+//                ActionBar ab = Objects.requireNonNull(getActivity()).getActionBar();
+//                if (ab != null) {
+//                    ab.setCustomView(mCollapsingToolbarLayout);
+//                    ab.setDisplayShowHomeEnabled(true);
+//                    ab.setDisplayHomeAsUpEnabled(true);
+//                    ab.setDisplayShowCustomEnabled(true);
+//                    ab.setDisplayShowTitleEnabled(true);
+//                    ab.setHomeAsUpIndicator(R.drawable.ic_arrow_back_black_24dp);
+//                    ab.setTitle(R.string.detail_title_id);
+//                    ab.setSubtitle(R.string.detail_subtitle_id);
+//                }
+//                mBackButton.setVisibility(View.VISIBLE);
+//                mTitleView.setText(title);
+//                mByLineView.setText(author);
+//            }
+
             mToolbar.setNavigationOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     Objects.requireNonNull(getActivity()).finish();
                 }
             });
-//        }
-//
-//        mTitleView.setText(title);
+        }
 
         mBodyView.setText(body);
 

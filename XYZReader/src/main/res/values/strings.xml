@@ -15,5 +15,7 @@
 
     <string name="list_item_title">Article Title</string>
     <string name="share_button">Share Button</string>
+    <string name="detail_title_id">R.id.detail_article_title</string>
+    <string name="detail_subtitle_id">R.id.article_subtitle</string>
 
 </resources>

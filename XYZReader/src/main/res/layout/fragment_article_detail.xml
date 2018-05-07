@@ -60,37 +60,35 @@
             <!--android:layout_width="match_parent"-->
             <!--android:layout_height="112dp"-->
             <!--android:background="@drawable/photo_background_protection"/>-->
+            <View
+                android:id="@+id/scrim"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/scrim"/>
 
-            <!--<LinearLayout-->
-            <!--android:id="@+id/meta_bar"-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:layout_gravity="bottom"-->
-            <!--android:background="@color/deep_purple_500"-->
-            <!--android:orientation="vertical"-->
-            <!--android:paddingBottom="@dimen/detail_metabar_vert_padding"-->
-            <!--android:paddingLeft="@dimen/detail_inner_horiz_margin"-->
-            <!--android:paddingRight="@dimen/detail_inner_horiz_margin"-->
-            <!--android:paddingTop="@dimen/detail_metabar_vert_padding">-->
+            <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_gravity="bottom"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed">
 
-            <!--<TextView-->
-            <!--android:id="@+id/detail_article_title"-->
-            <!--style="@style/AppTheme.ExpandedTitleTextAppearance.ArticleTitle"-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:lineSpacingMultiplier="0.9"-->
-            <!--android:paddingBottom="@dimen/detail_metabar_title_bottom_padding"-->
-            <!--tools:text="@string/list_item_title"/>-->
+            <TextView
+            android:id="@+id/detail_article_title"
+            style="@style/AppTheme.ExpandedTitleTextAppearance.ArticleTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_scrollFlags="scroll|enterAlwaysCollapsed"
+            tools:text="@string/list_item_title"/>
 
             <TextView
             android:id="@+id/article_byline"
             style="@style/AppTheme.ArticleByLine"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="bottom"
             tools:text="@string/list_item_subtitle"/>
 
-            <!--</LinearLayout>-->
+            </LinearLayout>
 
             <android.support.v7.widget.Toolbar
                 android:id="@+id/detail_toolbar"
@@ -99,6 +97,16 @@
                 app:layout_collapseMode="pin"
                 app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
                 tools:text="App Name">
+
+                <!--<ImageButton-->
+                    <!--android:id="@+id/back_btn"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:layout_gravity="start"-->
+                    <!--android:layout_marginStart="@dimen/sixteen_dip_margin"-->
+                    <!--android:background="@drawable/ic_arrow_back_black_24dp"-->
+                    <!--android:visibility="invisible"-->
+                    <!--android:contentDescription="@string/share_button"/>-->
 
                 <ImageButton
                     android:id="@+id/share_action"
