@@ -15,7 +15,7 @@
     <!--<dimen name="list_item_subtitle_padding">16dp</dimen>-->
     <dimen name="list_item_thumb_height">100dp</dimen>
     <dimen name="sixteen_dip_margin">16dp</dimen>
-    <dimen name="detail_byline_margin_start">34dp</dimen>
+    <dimen name="detail_byline_margin_start">16dp</dimen>
     <dimen name="expanded_title_margin_bottom">40dp</dimen>
     <dimen name="app_bar_height">320dp</dimen>
     <dimen name="action_bar_height">72dp</dimen>

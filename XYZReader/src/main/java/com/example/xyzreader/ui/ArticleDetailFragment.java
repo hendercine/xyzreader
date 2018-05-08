@@ -17,6 +17,8 @@ import android.support.v7.widget.CardView;
 import android.support.v7.widget.Toolbar;
 import android.text.Html;
 import android.text.format.DateUtils;
+import android.transition.Fade;
+import android.transition.TransitionManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -175,8 +177,11 @@ public class ArticleDetailFragment extends Fragment implements
                 mAppBarLayout.addOnOffsetChangedListener(new AppBarLayout.OnOffsetChangedListener() {
                     @Override
                     public void onOffsetChanged(AppBarLayout appBarLayout, int verticalOffset) {
+                        Fade fade = new Fade();
                         if (Math.abs(verticalOffset) == mAppBarLayout.getTotalScrollRange()) {
                             // Collapsed
+                            TransitionManager.beginDelayedTransition
+                                    (mAppBarLayout, fade);
                             mCollapsingToolbarLayout.setTitleEnabled
                                     (true);
                             mCollapsingToolbarLayout.setTitle(title);
@@ -185,6 +190,8 @@ public class ArticleDetailFragment extends Fragment implements
                             mByLineView.setVisibility(View.GONE);
                         } else if (verticalOffset == 0) {
                             // Expanded
+                            TransitionManager.beginDelayedTransition
+                                    (mAppBarLayout, fade);
                             mCollapsingToolbarLayout.setTitleEnabled(false);
                             mToolbar.setSubtitle(null);
                             mTitleView.setText(title);
