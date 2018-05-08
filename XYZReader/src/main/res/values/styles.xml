@@ -37,9 +37,6 @@
 
     <style name="AppTheme.ExpandedTitleTextAppearance">
         <item name="android:textStyle">bold</item>
-        <!--<item name="android:textAppearance">@style/Base.TextAppearance.AppCompat.Widget.ActionBar.Title</item>-->
-        <!--<item name="android:minLines">1</item>-->
-        <!--<item name="android:maxLines">2</item>-->
     </style>
 
     <style name="AppTheme.ExpandedTitleTextAppearance.OverFlow">
