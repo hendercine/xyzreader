@@ -14,7 +14,6 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.LoaderManager;
 import android.support.v4.app.ShareCompat;
 import android.support.v4.content.Loader;
-import android.support.v7.widget.CardView;
 import android.support.v7.widget.Toolbar;
 import android.text.Html;
 import android.text.format.DateUtils;
@@ -83,9 +82,9 @@ public class ArticleDetailFragment extends Fragment implements
     @Nullable
     @BindView(R.id.app_bar)
     AppBarLayout mAppBarLayout;
-    @Nullable
-    @BindView(R.id.card)
-    CardView mCard;
+//    @Nullable
+//    @BindView(R.id.card)
+//    CardView mCard;
 
     /**
      * Mandatory empty constructor for the fragment manager to instantiate the
