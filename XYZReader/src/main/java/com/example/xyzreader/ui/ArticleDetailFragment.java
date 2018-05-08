@@ -53,7 +53,7 @@ public class ArticleDetailFragment extends Fragment implements
     private Unbinder unbinder;
     private long mItemId;
 
-    @BindView(R.id.photo)
+    @BindView(R.id.collapsing_toolbar_backdrop_img)
     ImageView mPhotoView;
 
 //    TODO: Clear unneccessary commented code
@@ -144,8 +144,8 @@ public class ArticleDetailFragment extends Fragment implements
             return;
         }
 
-        String title = cursor.getString(ArticleLoader.Query.TITLE);
-        String author = Html.fromHtml(
+        final String title = cursor.getString(ArticleLoader.Query.TITLE);
+        final String author = Html.fromHtml(
                 DateUtils.getRelativeTimeSpanString(
                         cursor.getLong(ArticleLoader.Query.PUBLISHED_DATE),
                         System.currentTimeMillis(), DateUtils.HOUR_IN_MILLIS,
@@ -155,23 +155,46 @@ public class ArticleDetailFragment extends Fragment implements
         final String body = Html.fromHtml(cursor.getString(ArticleLoader.Query.BODY)).toString();
         String photo = cursor.getString(ArticleLoader.Query.PHOTO_URL);
 
-        mTitleView.setText(title);
-        mByLineView.setText(author);
-
-        if (mToolbar != null) {
+        if (mCollapsingToolbarLayout != null && mToolbar != null &&
+                mAppBarLayout != null) {
 //            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                Objects.requireNonNull(mToolbar).setNavigationIcon(R.drawable.ic_arrow_back_black_24dp);
-                if (mCard == null) {
-//                int titleMaxWidth = Objects.requireNonNull(mToolbar).getWidth();
+                mToolbar.setNavigationIcon(R.drawable.ic_arrow_back_black_24dp);
+            //                int titleMaxWidth = Objects.requireNonNull(mToolbar).getWidth();
 //                int currentTitleWidth = measureTitleWidth(title);
 //
 //                if (currentTitleWidth > titleMaxWidth) {
 //                    mToolbar.setTitleTextAppearance(getContext(), R.style.AppTheme_ExpandedTitleTextAppearance_OverFlow);
 //                }
-
-                    Objects.requireNonNull(mToolbar).setTitle(title);
-                }
-                mToolbar.setSubtitle(author);
+//                    Objects.requireNonNull(mCollapsingToolbarLayout).setTitle(title);
+//                    title.length();
+//                    mCollapsingToolbarLayout.setExpandedTitleTextAppearance(
+//                            R.style.AppTheme_ExpandedTitleTextAppearance);
+//                    mCollapsingToolbarLayout.setCollapsedTitleTextAppearance
+//                            (R.style.TextAppearance_AppCompat_Title);
+//            if (mCard == null)
+                mAppBarLayout.addOnOffsetChangedListener(new AppBarLayout.OnOffsetChangedListener() {
+                    @Override
+                    public void onOffsetChanged(AppBarLayout appBarLayout, int verticalOffset) {
+                        if (Math.abs(verticalOffset) == mAppBarLayout.getTotalScrollRange()) {
+                            // Collapsed
+                            mCollapsingToolbarLayout.setTitleEnabled
+                                    (true);
+                            mCollapsingToolbarLayout.setTitle(title);
+                            mToolbar.setSubtitle(author);
+                            mTitleView.setVisibility(View.GONE);
+                            mByLineView.setVisibility(View.GONE);
+                        } else if (verticalOffset == 0) {
+                            // Expanded
+                            mCollapsingToolbarLayout.setTitleEnabled(false);
+                            mToolbar.setSubtitle(null);
+                            mTitleView.setText(title);
+                            mByLineView.setText(author);
+                            mTitleView.setVisibility(View.VISIBLE);
+                            mByLineView.setVisibility(View.VISIBLE);
+                        }
+                    }
+                });
+//                mToolbar.setSubtitle(author);
 //            } else {
 //                ActionBar ab = Objects.requireNonNull(getActivity()).getActionBar();
 //                if (ab != null) {
@@ -185,8 +208,6 @@ public class ArticleDetailFragment extends Fragment implements
 //                    ab.setSubtitle(R.string.detail_subtitle_id);
 //                }
 //                mBackButton.setVisibility(View.VISIBLE);
-//                mTitleView.setText(title);
-//                mByLineView.setText(author);
 //            }
 
             mToolbar.setNavigationOnClickListener(new View.OnClickListener() {

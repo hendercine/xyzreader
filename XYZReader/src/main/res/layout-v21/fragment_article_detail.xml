@@ -50,7 +50,7 @@
                 tools:ignore="ContentDescription"/>
 
             <ImageView
-                android:id="@+id/photo"
+                android:id="@+id/collapsing_toolbar_backdrop_img"
                 style="@style/AppTheme.Thumbnail"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/app_bar_height"

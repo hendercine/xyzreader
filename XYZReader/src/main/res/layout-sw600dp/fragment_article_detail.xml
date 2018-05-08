@@ -48,7 +48,7 @@
 
                 <!--suppress AndroidLintContentDescription -->
                 <ImageView
-                    android:id="@+id/photo"
+                    android:id="@+id/collapsing_toolbar_backdrop_img"
                     style="@style/AppTheme.Thumbnail"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/detail_photo_height"
@@ -97,7 +97,7 @@
 
                         <TextView
                             android:id="@+id/detail_article_title"
-                            style="@style/AppTheme.ExpandedTitleTextAppearance.ArticleTitle"
+                            style="@style/AppTheme.ArticleTitle"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:lineSpacingMultiplier="0.9"
