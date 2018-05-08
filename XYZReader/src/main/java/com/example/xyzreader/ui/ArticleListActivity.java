@@ -50,6 +50,7 @@ public class ArticleListActivity extends AppCompatActivity implements
     private Toolbar mToolbar;
     private SwipeRefreshLayout mSwipeRefreshLayout;
     private RecyclerView mRecyclerView;
+    private boolean mDeviceSize;
 
     private SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.sss",
             Locale.US);
@@ -132,7 +133,9 @@ public class ArticleListActivity extends AppCompatActivity implements
         adapter.setHasStableIds(true);
         mRecyclerView.setAdapter(adapter);
         int columnCount;
-        if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE) {
+        mDeviceSize = getResources().getBoolean(R.bool.isTablet);
+        if (getResources().getConfiguration().orientation == Configuration
+                .ORIENTATION_LANDSCAPE || mDeviceSize) {
             columnCount = getResources().getInteger(R.integer.list_column_count);
         } else {
             columnCount = 1;

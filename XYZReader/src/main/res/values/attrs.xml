@@ -5,4 +5,5 @@
         <attr name="colorPrimaryDark">@color/deep_purple_900</attr>
         <attr name="colorAccent">@color/blue_a200</attr>
     </declare-styleable>
+    <bool name="isTablet">false</bool>
 </resources>
