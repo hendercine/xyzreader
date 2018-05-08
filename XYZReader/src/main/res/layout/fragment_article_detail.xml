@@ -5,21 +5,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <!--TODO: Clear unneccessary commented code -->
-    <!--<android.support.design.widget.FloatingActionButton-->
-        <!--android:id="@+id/share_fab"-->
-        <!--android:layout_width="56dp"-->
-        <!--android:layout_height="56dp"-->
-        <!--android:layout_marginBottom="@dimen/fab_margin"-->
-        <!--android:layout_marginEnd="@dimen/fab_margin"-->
-        <!--android:background="@drawable/add_fab_background"-->
-        <!--android:contentDescription="@string/action_share"-->
-        <!--android:src="@drawable/ic_share"-->
-        <!--app:elevation="@dimen/fab_elevation"-->
-        <!--app:layout_anchor="@id/app_bar"-->
-        <!--app:layout_anchorGravity="bottom|end"-->
-        <!--app:layout_scrollFlags="scroll|snap"/>-->
-
     <android.support.design.widget.AppBarLayout
         android:id="@+id/app_bar"
         android:layout_width="match_parent"
@@ -30,23 +15,9 @@
             android:id="@+id/collapsing_toolbar"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            app:expandedTitleTextAppearance="@style/TextAppearance.AppCompat.Title"
             app:contentScrim="@color/deep_purple_500"
+            app:expandedTitleTextAppearance="@style/TextAppearance.AppCompat.Title"
             app:layout_scrollFlags="scroll|exitUntilCollapsed">
-
-            <!--<FrameLayout-->
-            <!--android:id="@+id/photo_container"-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:background="@color/photo_placeholder">-->
-            <!--suppress AndroidLintContentDescription -->
-            <!--<ImageView-->
-                <!--android:layout_width="24dp"-->
-                <!--android:layout_height="24dp"-->
-                <!--android:layout_gravity="bottom"-->
-                <!--android:layout_margin="@dimen/sixteen_dip_margin"-->
-                <!--android:background="@color/blue_a200"-->
-                <!--android:src="@drawable/ic_arrow_back"/>-->
 
             <ImageView
                 android:id="@+id/collapsing_toolbar_backdrop_img"
@@ -58,50 +29,18 @@
                 app:layout_collapseParallaxMultiplier="0.7"
                 tools:ignore="ContentDescription"/>
 
-            <!--<View-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="112dp"-->
-            <!--android:background="@drawable/photo_background_protection"/>-->
             <View
                 android:id="@+id/scrim"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="@drawable/scrim"/>
 
-            <android.support.v7.widget.Toolbar
-                android:id="@+id/detail_toolbar"
-                android:layout_width="match_parent"
-                android:layout_height="?android:attr/actionBarSize"
-                app:layout_collapseMode="pin"
-                app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
-
-                <!--<ImageButton-->
-                    <!--android:id="@+id/back_btn"-->
-                    <!--android:layout_width="wrap_content"-->
-                    <!--android:layout_height="wrap_content"-->
-                    <!--android:layout_gravity="start"-->
-                    <!--android:layout_marginStart="@dimen/sixteen_dip_margin"-->
-                    <!--android:background="@drawable/ic_arrow_back_black_24dp"-->
-                    <!--android:visibility="invisible"-->
-                    <!--android:contentDescription="@string/share_button"/>-->
-                <ImageButton
-                    android:id="@+id/share_action"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="end"
-                    android:layout_marginEnd="@dimen/sixteen_dip_margin"
-                    android:background="@drawable/ic_share"
-                    android:visibility="invisible"
-                    android:contentDescription="@string/share_button"/>
-
-            </android.support.v7.widget.Toolbar>
-
             <LinearLayout
                 android:id="@+id/toolbar_title_layout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
                 android:layout_gravity="bottom"
+                android:orientation="vertical"
                 app:layout_collapseMode="pin">
 
                 <TextView
@@ -120,7 +59,24 @@
 
             </LinearLayout>
 
-            <!--</FrameLayout>-->
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/detail_toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?android:attr/actionBarSize"
+                app:layout_collapseMode="pin"
+                app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
+
+                <ImageButton
+                    android:id="@+id/share_action"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end"
+                    android:layout_marginEnd="@dimen/sixteen_dip_margin"
+                    android:background="@drawable/ic_share"
+                    android:contentDescription="@string/share_button"
+                    android:visibility="invisible"/>
+
+            </android.support.v7.widget.Toolbar>
 
         </android.support.design.widget.CollapsingToolbarLayout>
 
@@ -148,4 +104,3 @@
     </android.support.v4.widget.NestedScrollView>
 
 </android.support.design.widget.CoordinatorLayout>
-

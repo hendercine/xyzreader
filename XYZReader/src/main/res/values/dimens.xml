@@ -1,24 +1,27 @@
 <resources>
+    <!-- Generic dimens -->
+    <dimen name="sixteen_dip_margin">16dp</dimen>
     <!-- detail -->
     <dimen name="detail_title_text_size">32sp</dimen>
     <dimen name="detail_body_text_size">22sp</dimen>
     <item name="detail_body_line_spacing_multiplier" format="float" type="fraction">1.25</item>
-
+    <!--FAB Dimens-->
     <dimen name="fab_elevation">2dp</dimen>
     <dimen name="fab_press_translation_z">6dp</dimen>
-    <dimen name="fab_margin">24dp</dimen>
+    <dimen name="fab_margin_bottom">24dp</dimen>
+
     <dimen name="list_item_margin">4dp</dimen>
     <dimen name="list_item_text_margin">8dp</dimen>
     <dimen name="list_item_thumb_wh">99dp</dimen>
-    <!--<dimen name="list_item_card_top_margin">32dp</dimen>-->
     <dimen name="list_item_title_text_size">16sp</dimen>
-    <!--<dimen name="list_item_subtitle_padding">16dp</dimen>-->
     <dimen name="list_item_thumb_height">100dp</dimen>
-    <dimen name="sixteen_dip_margin">16dp</dimen>
+
     <dimen name="detail_byline_margin_start">16dp</dimen>
     <dimen name="expanded_title_margin_bottom">40dp</dimen>
     <dimen name="app_bar_height">320dp</dimen>
     <dimen name="action_bar_height">72dp</dimen>
     <dimen name="overflow_toolbar_title_size">24sp</dimen>
+    <dimen name="fab_size">56dp</dimen>
+    <dimen name="fab_margin_end">8dp</dimen>
 
 </resources>

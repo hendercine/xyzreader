@@ -15,10 +15,10 @@
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/share_fab"
-        android:layout_width="56dp"
-        android:layout_height="56dp"
-        android:layout_marginBottom="@dimen/fab_margin"
-        android:layout_marginEnd="@dimen/fab_margin"
+        android:layout_width="@dimen/fab_size"
+        android:layout_height="@dimen/fab_size"
+        android:layout_marginBottom="@dimen/fab_margin_bottom"
+        android:layout_marginEnd="@dimen/fab_margin_end"
         android:background="@drawable/add_fab_background"
         android:contentDescription="@string/action_share"
         android:src="@drawable/ic_share"
@@ -41,15 +41,6 @@
             app:layout_scrollFlags="scroll|exitUntilCollapsed">
 
             <ImageView
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:layout_gravity="bottom"
-                android:layout_margin="@dimen/sixteen_dip_margin"
-                android:background="@color/blue_a200"
-                android:src="@drawable/ic_arrow_back"
-                tools:ignore="ContentDescription"/>
-
-            <ImageView
                 android:id="@+id/collapsing_toolbar_backdrop_img"
                 style="@style/AppTheme.Thumbnail"
                 android:layout_width="match_parent"
@@ -58,22 +49,54 @@
                 app:layout_collapseParallaxMultiplier="0.7"
                 tools:ignore="ContentDescription"/>
 
-            <TextView
-            android:id="@+id/article_byline"
-            style="@style/AppTheme.ArticleByLine"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="bottom"
-            tools:text="@string/list_item_subtitle"/>
+            <View
+                android:id="@+id/scrim"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/scrim"/>
+
+            <LinearLayout
+                android:id="@+id/toolbar_title_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:orientation="vertical"
+                app:layout_collapseMode="pin">
+
+                <TextView
+                    android:id="@+id/detail_article_title"
+                    style="@style/AppTheme.ArticleTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    tools:text="@string/list_item_title"/>
+
+                <TextView
+                    android:id="@+id/article_byline"
+                    style="@style/AppTheme.ArticleByLine"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    tools:text="@string/list_item_subtitle"/>
+
+            </LinearLayout>
 
             <android.support.v7.widget.Toolbar
                 android:id="@+id/detail_toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="?android:attr/actionBarSize"
-                app:contentInsetStart="@dimen/sixteen_dip_margin"
                 app:layout_collapseMode="pin"
-                app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
-                tools:text="App Name"/>
+                app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
+
+                <ImageButton
+                    android:id="@+id/share_action"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end"
+                    android:layout_marginEnd="@dimen/sixteen_dip_margin"
+                    android:background="@drawable/ic_share"
+                    android:contentDescription="@string/share_button"
+                    android:visibility="invisible"/>
+
+            </android.support.v7.widget.Toolbar>
 
         </android.support.design.widget.CollapsingToolbarLayout>
 
