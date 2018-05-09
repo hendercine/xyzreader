@@ -2,9 +2,9 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    style="@style/AppTheme.DetailParentLayout"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="?attr/colorPrimaryDark">
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/share_fab"
@@ -17,22 +17,21 @@
         android:contentDescription="@string/action_share"
         app:elevation="@dimen/fab_elevation"
         app:layout_scrollFlags="scroll|snap"
-        app:layout_anchor="@id/toolbar_title_layout"
+        app:layout_anchor="@id/app_bar"
         app:layout_anchorGravity="bottom|end"/>
 
     <android.support.design.widget.AppBarLayout
         android:id="@+id/app_bar"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/app_bar_height"
-        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
-        style="@style/AppTheme.DetailParentLayout">
+        android:layout_height="wrap_content"
+        android:background="?attr/colorPrimary"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
 
         <android.support.design.widget.CollapsingToolbarLayout
             android:id="@+id/collapsing_toolbar"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             app:contentScrim="@color/deep_purple_500"
-            app:expandedTitleTextAppearance="@style/TextAppearance.AppCompat.Title"
             app:layout_scrollFlags="scroll|exitUntilCollapsed">
 
             <ImageView
@@ -57,6 +56,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom"
                 android:orientation="vertical"
+                android:paddingBottom="@dimen/sixteen_dip_margin"
                 app:layout_collapseMode="pin">
 
                 <TextView
@@ -82,15 +82,15 @@
                 app:layout_collapseMode="pin"
                 app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
 
-                <!--<ImageButton-->
-                    <!--android:id="@+id/share_action"-->
-                    <!--android:layout_width="wrap_content"-->
-                    <!--android:layout_height="wrap_content"-->
-                    <!--android:layout_gravity="end"-->
-                    <!--android:layout_marginEnd="@dimen/sixteen_dip_margin"-->
-                    <!--android:background="@drawable/ic_share"-->
-                    <!--android:contentDescription="@string/share_button"-->
-                    <!--android:visibility="invisible"/>-->
+                <ImageButton
+                    android:id="@+id/share_action"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end"
+                    android:layout_marginEnd="@dimen/sixteen_dip_margin"
+                    android:background="@drawable/ic_share"
+                    android:contentDescription="@string/share_button"
+                    android:visibility="invisible"/>
 
             </android.support.v7.widget.Toolbar>
 
@@ -102,6 +102,8 @@
         android:id="@+id/article_body_scroll_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_marginStart="@dimen/sw600dp_inner_horiz_margin"
+        android:layout_marginEnd="@dimen/sw600dp_inner_horiz_margin"
         android:background="@color/theme_secondary_light"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
@@ -110,11 +112,6 @@
             style="@style/AppTheme.ArticleBody"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/detail_inner_horiz_margin"
-            android:layout_marginRight="@dimen/detail_inner_horiz_margin"
-            android:lineSpacingMultiplier="@fraction/detail_body_line_spacing_multiplier"
-            android:paddingTop="@dimen/sixteen_dip_margin"
-            android:paddingBottom="@dimen/detail_body_bottom_margin"
             tools:text="@tools:sample/lorem/random"/>
 
     </android.support.v4.widget.NestedScrollView>

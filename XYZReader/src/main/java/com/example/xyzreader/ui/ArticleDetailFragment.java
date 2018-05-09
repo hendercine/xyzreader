@@ -53,6 +53,7 @@ public class ArticleDetailFragment extends Fragment implements
     private static final String TAG = "ArticleDetailFragment";
     public static final String ARG_ITEM_ID = "ARG_ITEM_ID";
 
+    private boolean mDeviceSize;
     private Unbinder unbinder;
     private long mItemId;
     private String mBody;
@@ -129,6 +130,7 @@ public class ArticleDetailFragment extends Fragment implements
         View view = inflater.inflate(R.layout.fragment_article_detail,
                 container, false);
         unbinder = ButterKnife.bind(this, view);
+        mDeviceSize = getResources().getBoolean(R.bool.isTablet);
 
         return view;
     }
@@ -168,8 +170,7 @@ public class ArticleDetailFragment extends Fragment implements
                             // Collapsed
                             TransitionManager.beginDelayedTransition
                                     (mAppBarLayout, fade);
-                            mCollapsingToolbarLayout.setTitleEnabled
-                                    (true);
+                            mCollapsingToolbarLayout.setTitleEnabled(true);
                             mCollapsingToolbarLayout.setTitle(title);
                             mToolbar.setSubtitle(author);
                             mTitleView.setVisibility(View.GONE);
@@ -195,7 +196,9 @@ public class ArticleDetailFragment extends Fragment implements
                             mToolbar.setSubtitle(author);
                             mTitleView.setVisibility(View.GONE);
                             mByLineView.setVisibility(View.GONE);
-                            Objects.requireNonNull(mShareAction).setVisibility(View.GONE);
+                            if (mShareAction != null) {
+                                mShareAction.setVisibility(View.GONE);
+                            }
                         }
                     }
                 });
@@ -259,15 +262,15 @@ public class ArticleDetailFragment extends Fragment implements
     private void activateShareButton() {
         if (mShareAction != null) {
             mShareAction.setVisibility(View.VISIBLE);
+            mShareAction.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    startActivity(Intent.createChooser(ShareCompat.IntentBuilder.from(Objects.requireNonNull(getActivity()))
+                            .setType("text/plain")
+                            .setText(mBody)
+                            .getIntent(), getString(R.string.action_share)));
+                }
+            });
         }
-        mShareAction.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(Intent.createChooser(ShareCompat.IntentBuilder.from(Objects.requireNonNull(getActivity()))
-                        .setType("text/plain")
-                        .setText(mBody)
-                        .getIntent(), getString(R.string.action_share)));
-            }
-        });
     }
 }

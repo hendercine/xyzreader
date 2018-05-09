@@ -1,0 +1,23 @@
+<!--
+  ~ Created by James Henderson on 2018
+  ~ Copyright (c) Hendercine Productions and James Henderson 2018.
+  ~ All rights reserved.
+  ~
+  ~ Last modified 5/8/18 6:46 PM
+  -->
+
+<resources>
+
+    <style name="AppTheme.ArticleTitle">
+        <item name="android:textAppearance">@style/TextAppearance.AppCompat.Display1</item>
+        <item name="fontFamily">sans-serif-condensed</item>
+        <item name="android:layout_marginStart">@dimen/sw600dp_inner_horiz_margin</item>
+    </style>
+
+    <style name="AppTheme.ArticleByLine">
+        <item name="android:textAppearance">@style/TextAppearance.AppCompat.Title</item>
+        <item name="android:textColor">@color/over_deep_purple_text</item>
+        <item name="android:layout_marginStart">@dimen/sw600dp_inner_horiz_margin</item>
+    </style>
+
+</resources>

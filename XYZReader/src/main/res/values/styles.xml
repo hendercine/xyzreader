@@ -61,6 +61,9 @@
         <item name="android:textAppearance">@style/TextAppearance.AppCompat.Medium</item>
         <item name="android:textColorLink">@color/blue_a200</item>
         <item name="android:textSize">@dimen/detail_body_text_size</item>
+        <item name="android:lineSpacingMultiplier">@fraction/detail_body_line_spacing_multiplier</item>
+        <item name="android:padding">@dimen/sixteen_dip_margin</item>
+        <item name="android:paddingBottom">@dimen/detail_body_bottom_margin</item>
     </style>
 
     <style name="AppTheme.ListItem">
