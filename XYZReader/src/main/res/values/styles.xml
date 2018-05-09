@@ -31,18 +31,6 @@
         <item name="android:fontFamily">sans-serif</item>
     </style>
 
-    <style name="AppTheme.DetailParentLayout">
-        <item name="android:fitsSystemWindows">true</item>
-    </style>
-
-    <style name="AppTheme.ExpandedTitleTextAppearance">
-        <item name="android:textStyle">bold</item>
-    </style>
-
-    <style name="AppTheme.ExpandedTitleTextAppearance.OverFlow">
-        <item name="android:textSize">@dimen/overflow_toolbar_title_size</item>
-    </style>
-
     <style name="AppTheme.ArticleTitle">
         <item name="android:textAppearance">@style/TextAppearance.AppCompat.Display1</item>
         <item name="fontFamily">sans-serif-condensed</item>

@@ -2,7 +2,6 @@
     <!-- Generic dimens -->
     <dimen name="sixteen_dip_margin">16dp</dimen>
     <!-- detail -->
-    <dimen name="detail_title_text_size">32sp</dimen>
     <dimen name="detail_body_text_size">22sp</dimen>
     <item name="detail_body_line_spacing_multiplier" format="float" type="fraction">1.25</item>
     <!--FAB Dimens-->
@@ -19,8 +18,6 @@
     <dimen name="detail_byline_margin_start">16dp</dimen>
     <dimen name="expanded_title_margin_bottom">40dp</dimen>
     <dimen name="app_bar_height">320dp</dimen>
-    <dimen name="action_bar_height">72dp</dimen>
-    <dimen name="overflow_toolbar_title_size">24sp</dimen>
     <dimen name="fab_size">56dp</dimen>
     <dimen name="fab_margin_end">8dp</dimen>
     <dimen name="appbar_elevation">4dp</dimen>

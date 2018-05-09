@@ -1,7 +1,12 @@
+<!--
+  ~ Created by James Henderson on 2018
+  ~ Copyright (c) Hendercine Productions and James Henderson 2018.
+  ~ All rights reserved.
+  ~
+  ~ Last modified 3/26/18 10:05 AM
+  -->
+
 <resources>
     <!-- detail -->
-    <bool name="detail_is_card">true</bool>
-
-    <dimen name="detail_photo_height">600dp</dimen>
-    <dimen name="detail_card_top_margin">256dp</dimen>
+    <dimen name="sw600dp_inner_horiz_margin">144dp</dimen>
 </resources>

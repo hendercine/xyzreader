@@ -3,7 +3,6 @@ package com.example.xyzreader.ui;
 import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.drawable.Drawable;
-import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -53,7 +52,6 @@ public class ArticleDetailFragment extends Fragment implements
     private static final String TAG = "ArticleDetailFragment";
     public static final String ARG_ITEM_ID = "ARG_ITEM_ID";
 
-    private boolean mDeviceSize;
     private Unbinder unbinder;
     private long mItemId;
     private String mBody;
@@ -83,9 +81,6 @@ public class ArticleDetailFragment extends Fragment implements
     @Nullable
     @BindView(R.id.app_bar)
     AppBarLayout mAppBarLayout;
-//    @Nullable
-//    @BindView(R.id.card)
-//    CardView mCard;
 
     /**
      * Mandatory empty constructor for the fragment manager to instantiate the
@@ -130,7 +125,6 @@ public class ArticleDetailFragment extends Fragment implements
         View view = inflater.inflate(R.layout.fragment_article_detail,
                 container, false);
         unbinder = ButterKnife.bind(this, view);
-        mDeviceSize = getResources().getBoolean(R.bool.isTablet);
 
         return view;
     }
@@ -147,7 +141,6 @@ public class ArticleDetailFragment extends Fragment implements
             return;
         }
 
-        final boolean isLollipop = Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP;
         final String title = cursor.getString(ArticleLoader.Query.TITLE);
         final String author = Html.fromHtml(
                 DateUtils.getRelativeTimeSpanString(
@@ -160,7 +153,7 @@ public class ArticleDetailFragment extends Fragment implements
         String photo = cursor.getString(ArticleLoader.Query.PHOTO_URL);
 
         if (mCollapsingToolbarLayout != null && mToolbar != null &&
-                mAppBarLayout != null) {
+                mAppBarLayout != null && mShareAction != null) {
                 mToolbar.setNavigationIcon(R.drawable.ic_arrow_back_black_24dp);
                 mAppBarLayout.addOnOffsetChangedListener(new AppBarLayout.OnOffsetChangedListener() {
                     @Override
@@ -175,9 +168,7 @@ public class ArticleDetailFragment extends Fragment implements
                             mToolbar.setSubtitle(author);
                             mTitleView.setVisibility(View.GONE);
                             mByLineView.setVisibility(View.GONE);
-                            if (isLollipop) {
                                 activateShareButton();
-                            }
                         } else if (verticalOffset == 0) {
                             // Expanded
                             mCollapsingToolbarLayout.setTitleEnabled(false);
@@ -186,9 +177,7 @@ public class ArticleDetailFragment extends Fragment implements
                             mByLineView.setText(author);
                             mTitleView.setVisibility(View.VISIBLE);
                             mByLineView.setVisibility(View.VISIBLE);
-                            if (isLollipop & mShareAction != null) {
-                                mShareAction.setVisibility(View.GONE);
-                            }
+                            mShareAction.setVisibility(View.GONE);
                         } else {
                             // Mid-scroll
                             mCollapsingToolbarLayout.setTitleEnabled(true);
@@ -196,9 +185,7 @@ public class ArticleDetailFragment extends Fragment implements
                             mToolbar.setSubtitle(author);
                             mTitleView.setVisibility(View.GONE);
                             mByLineView.setVisibility(View.GONE);
-                            if (mShareAction != null) {
-                                mShareAction.setVisibility(View.GONE);
-                            }
+                            mShareAction.setVisibility(View.GONE);
                         }
                     }
                 });
@@ -240,10 +227,6 @@ public class ArticleDetailFragment extends Fragment implements
                             .getIntent(), getString(R.string.action_share)));
                 }
             });
-        } else if (mShareAction != null && !isLollipop){
-            // Display share action button
-            activateShareButton();
-
         }
     }
 
